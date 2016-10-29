@@ -158,9 +158,12 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
 
   " ファイルオープンを便利に
   NeoBundle 'Shougo/unite.vim'
-
   " Unite.vimで最近使ったファイルを表示できるようにする
   NeoBundle 'Shougo/neomru.vim', {'type__protocol' : 'ssh' }
+  " Railsのファイル移動を楽にする
+  NeoBundle 'basyura/unite-rails', {'type__protocol' : 'ssh' }
+  " Unite.vimでYankの履歴を見れるように
+  NeoBundle 'Shougo/neoyank.vim', {'type__protocol' : 'ssh' }
 
   " Rails向けのコマンドを提供する
   NeoBundle 'tpope/vim-rails', {'type__protocol' : 'ssh' }
@@ -186,9 +189,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
 
   " vimでemmetを使用する
   NeoBundle 'mattn/emmet-vim', {'type__protocol' : 'ssh' }
-
-  " Railsのファイル移動を楽にする
-  NeoBundle 'basyura/unite-rails', {'type__protocol' : 'ssh' }
 
   " Markdown
   NeoBundle 'plasticboy/vim-markdown', {'type__protocol' : 'ssh'}
@@ -330,17 +330,10 @@ let g:unite_enable_start_insert=1
 " 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
-" バッファ一覧
-noremap <C-@> :Unite buffer<CR>
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-" ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,ur :<C-u>Unite file_mru buffer<CR>
+nnoremap <silent> ,up :<C-u>:Unite history/yank<CR>
 
 "------------------------------------
 " neosnippet
@@ -562,7 +555,7 @@ let g:lightline = {
 " ------------------------------------
 " NERDTreeの設定
 " ------------------------------------
-nnoremap <silent><C-w> :NERDTreeToggle<CR>
+nnoremap <silent><C-@> :NERDTreeToggle<CR>
 
 " ファイル形式の検出の有効化する
 " ファイル形式別プラグインのロードを有効化する
