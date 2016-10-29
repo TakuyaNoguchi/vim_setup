@@ -74,11 +74,6 @@ if executable('fcitx-remote')
   inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
 endif
 
-" ファイル形式の検出の有効化する
-" ファイル形式別プラグインのロードを有効化する
-" ファイル形式別インデントのロードを有効化する
-filetype plugin indent on
-
 " Ruby, JSのファイルを編集する際は行末の空白を削除する
 autocmd BufWritePost *.rb call DeleteLastSpace()
 autocmd BufWritePost *.js call DeleteLastSpace()
@@ -588,3 +583,8 @@ function! s:DetectEjs()
 endfunction
 
 autocmd BufNewFile,BufRead * call s:DetectEjs()
+
+" ファイル形式の検出の有効化する
+" ファイル形式別プラグインのロードを有効化する
+" ファイル形式別インデントのロードを有効化する
+filetype plugin indent on
