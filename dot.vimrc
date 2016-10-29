@@ -228,9 +228,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   " ステータスラインの表示を変更
   NeoBundle 'itchyny/lightline.vim', { 'type__protocol' : 'ssh' }
 
-  " ejsファイルのシンタックスハイライト
-  NeoBundle 'nikvdp/ejs-syntax', { 'type__protocol' : 'ssh' }
-
   " ディレクトリのツリー表示
   NeoBundle 'scrooloose/nerdtree', { 'type__protocol' : 'ssh' }
 call neobundle#end()
@@ -398,9 +395,6 @@ noremap ,ro :<C-u>Unite rails/config<CR>
 " 最近開いたファイルを開く
 nnoremap <leader>r :<C-u>Unite file_mru<CR>
 
-" :PrevimOpenでMarkdownファイルのプレビュー
-au BufRead,BufNewFile *.md set filetype=markdown
-
 """""""""""""""""""""""""""
 "JavaScriptの設定
 """""""""""""""""""""""""""
@@ -410,8 +404,7 @@ let g:SimpleJsIndenter_BriefMode = 1
 let g:SimpleJsIndenter_CaseIndentLevel = -1
 " DOMとMozilla関連とES6のメソッドを補完
 let g:jscomplete_use = ['dom', 'moz', 'es6th']
-" JSONファイルをJavaScriptファイルとして扱う
-autocmd BufNewFile,BufRead *.json set ft=javascript
+
 """""""""""""""""""""""""""
 " syntasticの設定
 """""""""""""""""""""""""""
@@ -486,8 +479,6 @@ let g:sass_compile_cssdir = ['css', 'stylesheet']
 " 自動コンパイルを実行する拡張子
 "let g:sass_compile_file = ['scss', 'sass']
 let g:sass_started_dirs = []
-
-autocmd FileType scss,sass  setlocal sw=2 sts=2 ts=2 et
 
 " erbの静的解析で表示したくないWarning
 let g:syntastic_eruby_ruby_quiet_messages =
@@ -571,20 +562,6 @@ let g:lightline = {
       \ }
 
 " ------------------------------------
-" ejs-syntaxの設定
-" ------------------------------------
-autocmd BufNewFile,BufRead *.ejs set filetype=ejs
-autocmd BufNewFile,BufRead *._ejs set filetype=ejs
-
-function! s:DetectEjs()
-    if getline(1) =~ '^#!.*\<ejs\>'
-        set filetype=ejs
-    endif
-endfunction
-
-autocmd BufNewFile,BufRead * call s:DetectEjs()
-
-" ------------------------------------
 " NERDTreeの設定
 " ------------------------------------
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
@@ -593,4 +570,3 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " ファイル形式別プラグインのロードを有効化する
 " ファイル形式別インデントのロードを有効化する
 filetype plugin indent on
-
