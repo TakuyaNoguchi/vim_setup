@@ -251,6 +251,20 @@ if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
 endif
 
+let g:neocomplete#auto_completion_start_length = 1
+let g:neocomplete#sources#buffer#cache_limit_size = 500000
+let g:neocomplete#data_directory = $HOME.'/.vim/cache/neocompl'
+let g:neocomplete#min_keyword_length = 3
+let g:neocomplete#enable_refresh_always = 1
+if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+endif
+
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+call neocomplete#custom#source('_', 'converters',
+      \ ['converter_remove_overlap', 'converter_remove_last_paren',
+      \  'converter_delimiter', 'converter_abbr'])
+
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
@@ -274,24 +288,12 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " --------------------------------
 " vim-markdown の設定
 " --------------------------------
-" markdownモードの時に neocomplete foldmethod=expr が出る場合の対処
-let g:neocomplete#auto_completion_start_length = 1
-let g:neocomplete#sources#buffer#cache_limit_size = 500000
-let g:neocomplete#data_directory = $HOME.'/.vim/cache/neocompl'
-let g:neocomplete#min_keyword_length = 3
-let g:neocomplete#enable_refresh_always = 1
-if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-call neocomplete#custom#source('_', 'converters',
-      \ ['converter_remove_overlap', 'converter_remove_last_paren',
-      \  'converter_delimiter', 'converter_abbr'])
-
 " markdownモードの際、linkの表示が簡潔になる機能を無効
 let g:vim_markdown_conceal = 0
 " markdownモードのリスト表記のインデントを設定
 let g:vim_markdown_new_list_item_indent = 2
+" markdownの折りたたみなし
+let g:vim_markdown_folding_disabled=1
 
 " --------------------------------
 " vim-easymotion の設定
