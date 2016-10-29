@@ -330,10 +330,12 @@ let g:unite_enable_start_insert=1
 " 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite file_mru buffer<CR>
-nnoremap <silent> ,up :<C-u>:Unite history/yank<CR>
+nnoremap <silent> ,ub  :<C-u>Unite buffer<CR>
+nnoremap <silent> ,ul  :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,ur  :<C-u>Unite file_mru buffer<CR>
+nnoremap <silent> ,up  :<C-u>Unite history/yank<CR>
+nnoremap <silent> ,uf  :<C-u>Unite file/new<CR>
+nnoremap <silent> ,ud  :<C-u>Unite directory/new<CR>
 
 "------------------------------------
 " neosnippet
