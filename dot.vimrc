@@ -230,6 +230,9 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
 
   " ejsファイルのシンタックスハイライト
   NeoBundle 'nikvdp/ejs-syntax', { 'type__protocol' : 'ssh' }
+
+  " ディレクトリのツリー表示
+  NeoBundle 'scrooloose/nerdtree', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
 NeoBundleCheck
@@ -331,7 +334,7 @@ let g:unite_enable_start_insert=1
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 " バッファ一覧
-noremap <C-p> :Unite buffer<CR>
+noremap <C-w> :Unite buffer<CR>
 " sourcesを「今開いているファイルのディレクトリ」とする
 noremap <C-@> :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 " ウィンドウを分割して開く
@@ -435,7 +438,6 @@ augroup END
 " Rubyのファイルを開いている場合、F4で実行する
 au FileType ruby map <F4>  :!ruby %<CR>
 
-
 """""""""""""""""""""""""""
 " tcomment_vimの設定
 """""""""""""""""""""""""""
@@ -490,8 +492,6 @@ autocmd FileType scss,sass  setlocal sw=2 sts=2 ts=2 et
 " erbの静的解析で表示したくないWarning
 let g:syntastic_eruby_ruby_quiet_messages =
     \ {'regex': 'possibly useless use of a variable in void context'}
-
-
 
 " ERBに関する設定
 autocmd FileType eruby exec 'set filetype=' . 'eruby.' . b:eruby_subtype
@@ -584,7 +584,13 @@ endfunction
 
 autocmd BufNewFile,BufRead * call s:DetectEjs()
 
+" ------------------------------------
+" NERDTreeの設定
+" ------------------------------------
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
 " ファイル形式の検出の有効化する
 " ファイル形式別プラグインのロードを有効化する
 " ファイル形式別インデントのロードを有効化する
 filetype plugin indent on
+
