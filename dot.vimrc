@@ -331,9 +331,7 @@ let g:unite_enable_start_insert=1
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 " バッファ一覧
-noremap <C-w> :Unite buffer<CR>
-" sourcesを「今開いているファイルのディレクトリ」とする
-noremap <C-@> :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+noremap <C-@> :Unite buffer<CR>
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
@@ -564,7 +562,7 @@ let g:lightline = {
 " ------------------------------------
 " NERDTreeの設定
 " ------------------------------------
-nnoremap <silent><C-i> :NERDTreeToggle<CR>
+nnoremap <silent><C-w> :NERDTreeToggle<CR>
 
 " ファイル形式の検出の有効化する
 " ファイル形式別プラグインのロードを有効化する
