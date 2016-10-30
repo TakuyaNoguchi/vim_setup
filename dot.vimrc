@@ -581,20 +581,20 @@ filetype plugin indent on
 set showtabline=2 " 常にタブラインを表示
 " The prefix key.
 nnoremap [Tag] <Nop>
-nmap t [Tag]
+nmap , [Tag]
 " Tab jump
-" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
+" ,1 で1番左のタブ、,2 で1番左から2番目のタブにジャンプ
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 
-" tc 新しいタブを一番右に作る
+" ,c 新しいタブを一番右に作る
 map <silent> [Tag]c :tablast <bar> tabnew<CR>
-" tx タブを閉じる
+" ,x タブを閉じる
 map <silent> [Tag]x :tabclose<CR>
-" tn 次のタブ
+" ,n 次のタブ
 map <silent> [Tag]n :tabnext<CR>
-" tp 前のタブ
+" ,p 前のタブ
 map <silent> [Tag]p :tabprevious<CR>
 
 " ------------------------------------
