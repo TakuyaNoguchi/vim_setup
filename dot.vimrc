@@ -230,6 +230,14 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
 
   " ディレクトリのツリー表示
   NeoBundle 'scrooloose/nerdtree', { 'type__protocol' : 'ssh' }
+
+  " Yankしたもので対象テキストを上書きするプラグイン
+  NeoBundle 'kana/vim-operator-replace', { 'type__protocol' : 'ssh' }
+  NeoBundle 'kana/vim-operator-user', { 'type__protocol' : 'ssh' }
+
+  " メモを取るためのプラグイン
+  NeoBundle 'fuenor/qfixgrep', { 'type__protocol' : 'ssh' }
+  NeoBundle 'fuenor/qfixhowm', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
 NeoBundleCheck
@@ -386,9 +394,8 @@ noremap ,rg :<C-u>Unite rails/gemfile<CR>
 noremap ,rt :<C-u>Unite rails/spec<CR>
 noremap ,rd :<C-u>Unite rails/db<CR>
 noremap ,ro :<C-u>Unite rails/config<CR>
-
-" 最近開いたファイルを開く
-nnoremap <leader>r :<C-u>Unite file_mru<CR>
+noremap <Leader>A :A<CR>
+noremap <Leader>R :R<CR>
 
 """""""""""""""""""""""""""
 "JavaScriptの設定
@@ -588,3 +595,20 @@ map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 " tp 前のタブ
 map <silent> [Tag]p :tabprevious<CR>
+
+" ------------------------------------
+" vim-operator-replaceの設定
+" ------------------------------------
+map R <Plug>(operator-replace)
+
+" ------------------------------------
+" qfixhowmの設定
+" ------------------------------------
+" qFixhowmの拡張子をmd
+let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
+
+" ファイルタイプをmarkdownに変更
+let QFixHowm_FileType = 'markdown'
+
+" タイトル記号を # に変更
+let QFixHowm_Title = '#'
