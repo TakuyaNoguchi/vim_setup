@@ -87,8 +87,9 @@ endfunction
 " 参考サイト(http://postd.cc/how-to-boost-your-vim-productivity/)
 " Leaderの設定(デフォルトは\)
 let mapleader = "\<Space>"
-" Space + w でファイルの保存
+" よく使うコマンド
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
 " Visual Mode のよく使う操作を Space + キーで行う
 vmap <Leader>y "+y
 vmap <Leader>d "+d
