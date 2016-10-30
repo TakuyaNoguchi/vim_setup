@@ -567,7 +567,7 @@ let g:lightline = {
 " ------------------------------------
 " NERDTreeの設定
 " ------------------------------------
-nnoremap <silent><C-@> :NERDTreeToggle<CR>
+nnoremap <silent><C-g> :NERDTreeToggle<CR>
 
 " ファイル形式の検出の有効化する
 " ファイル形式別プラグインのロードを有効化する
