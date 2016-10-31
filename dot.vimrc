@@ -13,8 +13,8 @@ set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止まらない
 set clipboard=unnamed,autoselect
 " swapファイルを生成しない
 set noswapfile
-" カーソル前の文字削除
-inoremap <silent> <C-h> <C-g>u<C-h>
+" BackSpace、Deleteを有効化
+set backspace=indent,eol,start
 " カーソル後の文字削除
 inoremap <silent> <C-d> <Del>
 " バックアップファイルを作成しない
