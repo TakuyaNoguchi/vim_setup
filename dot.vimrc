@@ -19,6 +19,8 @@ inoremap <silent> <C-h> <C-g>u<C-h>
 inoremap <silent> <C-d> <Del>
 " バックアップファイルを作成しない
 set nobackup
+" 検索ワードのハイライトを無効
+set nohlsearch
 " 括弧のハイライトを消す
 let loaded_matchparen = 1
 " ハイライトを有効化する
