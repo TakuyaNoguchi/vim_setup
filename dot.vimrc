@@ -32,6 +32,12 @@ set autoindent
 " ステータスラインの表示のために必要
 set laststatus=2
 set t_Co=256
+" コメント行の改行時にコメントアウトが継続されてしまうのを防ぐ
+augroup auto_comment_off
+    autocmd!
+    autocmd BufEnter * setlocal formatoptions-=r
+    autocmd BufEnter * setlocal formatoptions-=o
+augroup END
 " カーソル位置を記憶する
 au BufWritePost * if &filetype != "gitcommit" | mkview | endif
 autocmd BufReadPost * if &filetype != "gitcommit" | loadview | endif
