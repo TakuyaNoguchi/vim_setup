@@ -247,9 +247,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   " メモを取るためのプラグイン
   NeoBundle 'fuenor/qfixgrep', { 'type__protocol' : 'ssh' }
   NeoBundle 'fuenor/qfixhowm', { 'type__protocol' : 'ssh' }
-
-  " ペーストをする際に自動的にpaste modeに移行する
-  NeoBundle 'ConradIrwin/vim-bracketed-paste', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
 NeoBundleCheck
