@@ -83,8 +83,8 @@ if executable('fcitx-remote')
 endif
 
 " Ruby, JSのファイルを編集する際は行末の空白を削除する
-autocmd BufWritePost *.rb call DeleteLastSpace()
-autocmd BufWritePost *.js call DeleteLastSpace()
+autocmd BufWritePre *.rb call DeleteLastSpace()
+autocmd BufWritePre *.js call DeleteLastSpace()
 function! DeleteLastSpace()
     let save_cursor = getpos('.')
     silent exec 'retab'
