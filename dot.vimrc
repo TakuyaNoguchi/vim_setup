@@ -10,7 +10,7 @@ set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
 set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止まらないようにする"
 " 他のアプリとクリップボードを共有
-set clipboard=unnamed,autoselect
+set clipboard=unnamedplus
 " swapファイルを生成しない
 set noswapfile
 " BackSpace、Deleteを有効化
