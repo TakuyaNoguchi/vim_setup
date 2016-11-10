@@ -11,7 +11,7 @@ if [ ! -e "$HOME/.vim" ]; then
 fi
 
 if [ ! -e "$HOME/.vim/filetype.vim" ]; then
-  ln -sf $(git rev-parse --show-toplevel)/filetype.vim $HOME/filetype.vim
+  ln -sf $(git rev-parse --show-toplevel)/filetype.vim $HOME/.vim/filetype.vim
 fi
 
 if [ ! -e "$HOME/.vim/indent" ]; then
