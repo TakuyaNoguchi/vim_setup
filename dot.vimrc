@@ -613,6 +613,8 @@ map R <Plug>(operator-replace)
 " ------------------------------------
 " qfixhowmの設定
 " ------------------------------------
+" 保存先ディレクトリ
+let howm_dir = '~/howm_memo'
 " qFixhowmの拡張子をmd
 let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
 
