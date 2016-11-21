@@ -241,10 +241,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   " Yankしたもので対象テキストを上書きするプラグイン
   NeoBundle 'kana/vim-operator-replace', { 'type__protocol' : 'ssh' }
   NeoBundle 'kana/vim-operator-user', { 'type__protocol' : 'ssh' }
-
-  " メモを取るためのプラグイン
-  NeoBundle 'fuenor/qfixgrep', { 'type__protocol' : 'ssh' }
-  NeoBundle 'fuenor/qfixhowm', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
 NeoBundleCheck
@@ -607,17 +603,3 @@ map <silent> [Tag]p :tabprevious<CR>
 " vim-operator-replaceの設定
 " ------------------------------------
 map R <Plug>(operator-replace)
-
-" ------------------------------------
-" qfixhowmの設定
-" ------------------------------------
-" 保存先ディレクトリ
-let howm_dir = '~/howm_memo'
-" qFixhowmの拡張子をmd
-let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
-
-" ファイルタイプをmarkdownに変更
-let QFixHowm_FileType = 'markdown'
-
-" タイトル記号を # に変更
-let QFixHowm_Title = '#'
