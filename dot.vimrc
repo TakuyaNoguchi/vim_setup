@@ -207,6 +207,7 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
 
   " JavaScript
   NeoBundle 'pangloss/vim-javascript', { 'type__protocol' : 'ssh' }
+  NeoBundle 'mattn/jscomplete-vim', { 'type__protocol' : 'ssh' }
 
   " JavaScriptのインデント
   NeoBundle 'jiangmiao/simple-javascript-indenter', { 'type__protocol' : 'ssh' }
