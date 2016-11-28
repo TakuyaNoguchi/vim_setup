@@ -428,7 +428,10 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Ruby用のmatchitの設定
+"""""""""""""""""""""""""""
+" Ruby用の設定
+"""""""""""""""""""""""""""
+" matchitの設定
 augroup matchit
   au!
   au FileType ruby let b:match_words = '\<\(module\|class\|def\|begin\|do\|if\|unless\|case\)\>:\<\(elsif\|when\|rescue\)\>:\<\(else\|ensure\)\>:\<end\>'
