@@ -423,8 +423,8 @@ let g:syntastic_mode_map = {
 """""""""""""""""""""""""""
 " vim-easy-alignの設定
 """""""""""""""""""""""""""
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
