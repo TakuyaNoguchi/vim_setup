@@ -417,10 +417,10 @@ let g:jscomplete_use = ['dom', 'moz', 'es6th']
 """""""""""""""""""""""""""
 " syntasticの設定
 """""""""""""""""""""""""""
-" コードの静的解析を行うための設定(JavaScriptの設定)
+" コードの静的解析を行うための設定
 let g:syntastic_mode_map = {
-      \ "mode" : "active",
-      \ "active_filetypes" : ["javascript", "json"],
+      \ "mode" : "passive",
+      \ "passive_filetypes" : ["ruby", "javascript"],
 \}
 
 """""""""""""""""""""""""""
