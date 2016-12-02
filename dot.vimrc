@@ -621,7 +621,7 @@ map R <Plug>(operator-replace)
 " 保存先ディレクトリ
 let howm_dir = '~/howm_memo'
 " qFixhowmの拡張子をmd
-let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
+let howm_filename = '%Y/%m/%d/%H%M%S.md'
 
 " ファイルタイプをmarkdownに変更
 let QFixHowm_FileType = 'markdown'
