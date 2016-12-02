@@ -194,6 +194,9 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   NeoBundle 'Shougo/neosnippet', {'type__protocol' : 'ssh' }
   NeoBundle 'Shougo/neosnippet-snippets', {'type__protocol' : 'ssh' }
 
+  " 開いているコードを素早く実行する
+  NeoBundle 'thinca/vim-quickrun', { 'type__protocol' : 'ssh'}
+
   " vimでemmetを使用する
   NeoBundle 'mattn/emmet-vim', {'type__protocol' : 'ssh' }
 
