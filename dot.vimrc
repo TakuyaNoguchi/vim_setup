@@ -17,8 +17,9 @@ set backspace=indent,eol,start
 inoremap <silent> <C-d> <Del>
 " バックアップファイルを作成しない
 set nobackup
-" 検索ワードのハイライトを無効
-set nohlsearch
+" 検索ワードのハイライトを有効(C-lで一解除)
+set hlsearch
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " 括弧のハイライトを消す
 let loaded_matchparen = 1
 " ハイライトを有効化する
