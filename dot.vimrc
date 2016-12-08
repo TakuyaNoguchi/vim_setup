@@ -8,7 +8,10 @@ set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先�
 set history=1000
 set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
-set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止まらないようにする"
+set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止まらないようにする
+" Insertモード内でpasteモードへの切り替えを行う
+" 「Ctrl-Shift-p -> Ctrl-Shift-v」のように入力して貼り付けることを想定
+set pastetoggle=<C-p>
 " swapファイルを生成しない
 set noswapfile
 " BackSpace、Deleteを有効化
