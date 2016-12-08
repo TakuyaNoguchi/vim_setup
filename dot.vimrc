@@ -629,3 +629,14 @@ let QFixHowm_FileType = 'markdown'
 
 " タイトル記号を # に変更
 let QFixHowm_Title = '#'
+
+
+" ------------------------------------
+" open-browser.vimの設定
+" 参考サイト: http://easyramble.com/open-url-with-browser-from-vim.html
+" ------------------------------------
+" disable netrw's gx mapping.
+let g:netrw_nogx = 1
+" カーソル下の文字列がURLの場合はそのページ、それ以外は検索した結果をブラウザで開く
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
