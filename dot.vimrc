@@ -338,10 +338,7 @@ map t <Plug>(easymotion-tl)
 map F <Plug>(easymotion-Fl)
 map T <Plug>(easymotion-Tl)
 
-nmap s <Plug>(easymotion-s2)
-vmap s <Plug>(easymotion-s2)
-" surround.vimとかぶるので`z`" jで現在行以降、kで現在行以前を対象に検索する
-omap z <Plug>(easymotion-s2)
+map <Leader>s <Plug>(easymotion-s2)
 " j で現在行以降、k で現在行以前を対象に検索
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
