@@ -148,8 +148,8 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   NeoBundle 'thinca/vim-ref', {'type__protocol' : 'ssh' }
   NeoBundle 'yuku-t/vim-ref-ri', {'type__protocol' : 'ssh' }
 
-  " タグジャンプ
-  NeoBundle 'szw/vim-tags', {'type__protocol' : 'ssh'}
+  " タグ生成
+  NeoBundle 'soramugi/auto-ctags.vim', {'type__protocol' : 'ssh'}
 
   NeoBundle 'vim-ruby/vim-ruby', {'type__protocol' : 'ssh' }
 
@@ -621,3 +621,13 @@ let g:netrw_nogx = 1
 " カーソル下の文字列がURLの場合はそのページ、それ以外は検索した結果をブラウザで開く
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
+" ------------------------------------
+" auto-ctags.vimの設定
+" ------------------------------------
+" ファイル保存時に自動タグ生成(:Ctags で手動生成)
+"let g:auto_ctags = 1
+" tagsファイルの生成先ディレクトリ(左に書いたものが優先される)
+"let g:auto_ctags_directory_list = ['.git', '.svn']
+" ctagsのオプション
+" let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
