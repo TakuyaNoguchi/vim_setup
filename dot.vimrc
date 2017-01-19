@@ -613,21 +613,6 @@ map <silent> [Tag]p :tabprevious<CR>
 map R <Plug>(operator-replace)
 
 " ------------------------------------
-" qfixhowmの設定
-" ------------------------------------
-" 保存先ディレクトリ
-let howm_dir = '~/howm_memo'
-" qFixhowmの拡張子をmd
-let howm_filename = '%Y/%m/%d/%H%M%S.md'
-
-" ファイルタイプをmarkdownに変更
-let QFixHowm_FileType = 'markdown'
-
-" タイトル記号を # に変更
-let QFixHowm_Title = '#'
-
-
-" ------------------------------------
 " open-browser.vimの設定
 " 参考サイト: http://easyramble.com/open-url-with-browser-from-vim.html
 " ------------------------------------
