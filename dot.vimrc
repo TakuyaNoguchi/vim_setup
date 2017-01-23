@@ -10,8 +10,9 @@ set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
 set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止まらないようにする
 " Insertモード内でpasteモードへの切り替えを行う
-" 「Ctrl-; -> Ctrl-Shift-v」のように入力して貼り付けることを想定
-set pastetoggle=<C-;>
+" 「Ctrl-@ -> Ctrl-Shift-v」のように入力して貼り付けることを想定
+" Normalモードで :a! または :i! を使用してペーストするようにする
+"set pastetoggle=<C-@>
 " swapファイルを生成しない
 set noswapfile
 " BackSpace、Deleteを有効化
