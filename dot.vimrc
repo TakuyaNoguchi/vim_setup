@@ -12,7 +12,7 @@ set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止まらない
 " Insertモード内でpasteモードへの切り替えを行う
 " 「Ctrl-@ -> Ctrl-Shift-v」のように入力して貼り付けることを想定
 " Normalモードで :a! または :i! を使用してペーストするようにする
-"set pastetoggle=<C-@>
+set pastetoggle=<C-@>
 " swapファイルを生成しない
 set noswapfile
 " BackSpace、Deleteを有効化
