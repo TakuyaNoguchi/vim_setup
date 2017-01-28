@@ -319,6 +319,13 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " --------------------------------
+" emmet-vim
+" --------------------------------
+" [Document](https://github.com/mattn/emmet-vim/blob/master/doc/emmet.txt)
+" Prefixキーを「Ctrl+y」 から 「Ctrl+k」に変更
+let g:user_emmet_leader_key = '<C-k>'
+
+" --------------------------------
 " vim-markdown の設定
 " --------------------------------
 " markdownモードの際、linkの表示が簡潔になる機能を無効
