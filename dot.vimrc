@@ -370,8 +370,6 @@ let g:unite_enable_start_insert=1
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
-" grep検索
-
 nnoremap <silent> ,ub  :<C-u>Unite buffer<CR>
 nnoremap <silent> ,ul  :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur  :<C-u>Unite file_mru buffer<CR>
