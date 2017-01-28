@@ -384,10 +384,10 @@ if has('conceal')
 endif
 
 " RailsのSnippetの設定
-autocmd User Rails.view*                 NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.view.snip
-autocmd User Rails.controller*           NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.controller.snip
-autocmd User Rails/db/migrate/*          NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.migrate.snip
-autocmd User Rails/config/routes.rb      NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.route.snip
+autocmd User Rails.view* NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.view.snip
+autocmd User Rails.controller* NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.controller.snip
+autocmd User Rails/db/migrate/* NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.migrate.snip
+autocmd User Rails/config/routes.rb NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.route.snip
 
 """"""""""""""""""""""""""""""
 " unite-railsの設定
@@ -403,8 +403,6 @@ noremap ,rg :<C-u>Unite rails/gemfile<CR>
 noremap ,rt :<C-u>Unite rails/spec<CR>
 noremap ,rd :<C-u>Unite rails/db<CR>
 noremap ,ro :<C-u>Unite rails/config<CR>
-noremap <Leader>A :A<CR>
-noremap <Leader>R :R<CR>
 
 """""""""""""""""""""""""""
 "JavaScriptの設定
