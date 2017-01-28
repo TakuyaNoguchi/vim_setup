@@ -373,6 +373,11 @@ nnoremap <silent> ,uf  :<C-u>Unite file/new<CR>
 nnoremap <silent> ,ud  :<C-u>Unite directory/new<CR>
 nnoremap <silent> ,ug  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 
+" よく使うコマンドをLeader(Space)との組み合わせで実行できるように設定
+nmap <Leader>b :<C-u>Unite file_mru buffer<CR>
+nmap <Leader>d :<C-u>Unite directory/new<CR>
+nmap <Leader>f :<C-u>Unite file/new<CR>
+
 " unite grep に ag(The Silver Searcher) を使用
 "if executable('ag')
 "  let g:unite_source_grep_command = 'ag'
@@ -427,6 +432,11 @@ noremap ,rg :<C-u>Unite rails/gemfile<CR>
 noremap ,rt :<C-u>Unite rails/spec<CR>
 noremap ,rd :<C-u>Unite rails/db<CR>
 noremap ,ro :<C-u>Unite rails/config<CR>
+
+" よく使うコマンドをLeader(Space)との組み合わせで実行できるように設定
+nmap <Leader>c :<C-u>Unite rails/controller<CR>
+nmap <Leader>m :<C-u>Unite rails/model<CR>
+nmap <Leader>v :<C-u>Unite rails/view<CR>
 
 """""""""""""""""""""""""""
 "JavaScriptの設定
