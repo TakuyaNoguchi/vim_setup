@@ -9,6 +9,8 @@ set history=1000
 set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
 set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止まらないようにする
+" カレントディレクトリを開いているファイルのディレクトリに自動的に切り替える
+set autochdir
 " Insertモード内でpasteモードへの切り替えを行う
 " 「Ctrl-@ -> Ctrl-Shift-v」のように入力して貼り付けることを想定
 " Normalモードで :a! または :i! を使用してペーストするようにする
@@ -169,7 +171,18 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   NeoBundle 'tmhedberg/matchit', {'type__protocol' : 'ssh' }
 
   " ファイルオープンを便利に
-  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/unite.vim', {'type__protocol' : 'ssh' }
+  NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+    \ 'windows' : 'make -f make_mingw32.mak',
+    \ 'cygwin' : 'make -f make_cygwin.mak',
+    \ 'mac' : 'make -f make_mac.mak',
+    \ 'unix' : 'make -f make_unix.mak',
+    \ },
+  \ 'type__protocol' : 'ssh'
+  \ }
+
+  "NeoBundle 'Shougo/vimproc.vim', {'type__protocol' : 'ssh' }
   " Unite.vimで最近使ったファイルを表示できるようにする
   NeoBundle 'Shougo/neomru.vim', {'type__protocol' : 'ssh' }
   " Railsのファイル移動を楽にする
@@ -349,12 +362,23 @@ let g:unite_enable_start_insert=1
 " 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
+
+" grep検索
+
 nnoremap <silent> ,ub  :<C-u>Unite buffer<CR>
 nnoremap <silent> ,ul  :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur  :<C-u>Unite file_mru buffer<CR>
 nnoremap <silent> ,up  :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,uf  :<C-u>Unite file/new<CR>
 nnoremap <silent> ,ud  :<C-u>Unite directory/new<CR>
+nnoremap <silent> ,ug  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+
+" unite grep に ag(The Silver Searcher) を使用
+"if executable('ag')
+"  let g:unite_source_grep_command = 'ag'
+"  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+"  let g:unite_source_grep_recursive_opt = ''
+"endif
 
 "------------------------------------
 " neosnippet
