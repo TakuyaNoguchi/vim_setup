@@ -327,6 +327,14 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " emmet-vim
 " --------------------------------
 " [Document](https://github.com/mattn/emmet-vim/blob/master/doc/emmet.txt)
+" 言語を日本語に設定
+let g:user_emmet_settings = {
+    \    'variables': {
+    \      'lang': "ja"
+    \    },
+    \   'indentation': '  '
+    \ }
+
 " Prefixキーを「Ctrl+y」 から 「Ctrl+k」に変更
 let g:user_emmet_leader_key = '<C-k>'
 
