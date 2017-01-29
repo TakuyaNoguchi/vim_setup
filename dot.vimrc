@@ -34,6 +34,8 @@ syntax enable
 set expandtab
 " 新しい行を開始したとき、新しい行のインデントを現在行と同じにする
 set autoindent
+set tabstop=2
+set shiftwidth=2
 " ステータスラインの表示のために必要
 set laststatus=2
 set t_Co=256
