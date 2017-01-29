@@ -238,6 +238,9 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   " JavaScriptの色付け
   NeoBundle 'jelera/vim-javascript-syntax', { 'type__protocol' : 'ssh' }
 
+  " React.js
+  NeoBundle 'mxw/vim-jsx', { 'type__protocol' : 'ssh' }
+
   " VimでPerl、Rubyの正規表現を使用する(置換は %S を使用することで利用可能)
   NeoBundle 'othree/eregex.vim', { 'type__protocol' : 'ssh' }
 
