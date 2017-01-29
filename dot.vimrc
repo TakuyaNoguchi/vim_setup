@@ -379,7 +379,7 @@ nnoremap <silent> ,ud  :<C-u>Unite directory/new<CR>
 nnoremap <silent> ,ug  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 
 " よく使うコマンドをLeader(Space)との組み合わせで実行できるように設定
-nmap <Leader>b :<C-u>Unite file_mru buffer<CR>
+nmap <Leader>b :<C-u>Unite buffer<CR>
 nmap <Leader>d :<C-u>Unite directory/new<CR>
 nmap <Leader>f :<C-u>Unite file/new<CR>
 
