@@ -268,6 +268,9 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   " Yankしたもので対象テキストを上書きするプラグイン
   NeoBundle 'kana/vim-operator-replace', { 'type__protocol' : 'ssh' }
   NeoBundle 'kana/vim-operator-user', { 'type__protocol' : 'ssh' }
+
+  " Slimのシンタックスハイライト
+  NeoBundle 'slim-template/vim-slim', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
 NeoBundleCheck
