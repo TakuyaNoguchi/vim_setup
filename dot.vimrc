@@ -9,9 +9,13 @@ set history=1000
 set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
 set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止まらないようにする
-" Yankでクリップボートにコピーする
+" yankでクリップボートにコピーする
 set clipboard&
 set clipboard^=unnamedplus
+" 削除キーでyankしない
+nnoremap x "_x
+"nnoremap d "_d
+"nnoremap D "_D
 " カレントディレクトリを開いているファイルのディレクトリに自動的に切り替える
 set autochdir
 " Insertモード内でpasteモードへの切り替えを行う
