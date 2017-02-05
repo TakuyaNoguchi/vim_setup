@@ -12,10 +12,6 @@ set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止まらない
 " yankでクリップボートにコピーする
 set clipboard&
 set clipboard^=unnamedplus
-" 削除キーでyankしない
-nnoremap x "_x
-"nnoremap d "_d
-"nnoremap D "_D
 " カレントディレクトリを開いているファイルのディレクトリに自動的に切り替える
 set autochdir
 " Insertモード内でpasteモードへの切り替えを行う
@@ -85,6 +81,11 @@ nnoremap c. q:k<CR>
 " バッファの移動を楽にする
 nnoremap <silent> gp :bprevious<CR>
 nnoremap <silent> gn :bnext<CR>
+
+" 削除キーでyankしない
+nnoremap x "_x
+"nnoremap d "_d
+"nnoremap D "_D
 
 " IMEをノーマルモードに切り替わる時にOFFにする
 if executable('fcitx-remote')
