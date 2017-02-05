@@ -82,6 +82,10 @@ nnoremap c. q:k<CR>
 nnoremap <silent> gp :bprevious<CR>
 nnoremap <silent> gn :bnext<CR>
 
+" コマンド履歴検索の際に途中まで入力した内容でフィルタリングするように
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 " 削除キーでyankしない
 nnoremap x "_x
 "nnoremap d "_d
