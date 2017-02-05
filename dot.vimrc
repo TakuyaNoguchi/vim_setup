@@ -485,6 +485,8 @@ let g:syntastic_mode_map = {
       \ "active_filetypes" : ["ruby", "javascript"],
 \}
 
+nnoremap <C-w>t :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
 """""""""""""""""""""""""""
 " vim-easy-alignの設定
 """""""""""""""""""""""""""
