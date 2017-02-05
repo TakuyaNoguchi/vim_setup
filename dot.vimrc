@@ -82,9 +82,16 @@ nnoremap c. q:k<CR>
 nnoremap <silent> gp :bprevious<CR>
 nnoremap <silent> gn :bnext<CR>
 
-" コマンド履歴検索の際に途中まで入力した内容でフィルタリングするように
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
+" コマンドラインモードのキーバインドをEmacsに
+cnoremap <C-A> <Home>
+cnoremap <C-B> <Left>
+cnoremap <C-D> <Del>
+cnoremap <C-E> <End>
+cnoremap <C-F> <Right>
+cnoremap <C-N> <Down>
+cnoremap <C-P> <Up>
+cnoremap <Esc><C-B> <S-Left>
+cnoremap <Esc><C-F> <S-Right>
 
 " 削除キーでyankしない
 nnoremap x "_x
