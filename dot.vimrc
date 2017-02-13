@@ -81,6 +81,10 @@ nnoremap c. q:k<CR>
 " バッファの移動を楽にする
 nnoremap <silent> gp :bprevious<CR>
 nnoremap <silent> gn :bnext<CR>
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
 
 " コマンドラインモードのキーバインドをEmacsに
 cnoremap <C-A> <Home>
