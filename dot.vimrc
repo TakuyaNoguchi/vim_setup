@@ -165,16 +165,9 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
-  " Visual Mode の改良プラグイン
-  NeoBundle 'terryma/vim-expand-region', { 'type__protocol' : 'ssh' }
-
   " コード補完
   NeoBundle 'Shougo/neocomplete.vim', {'type__protocol' : 'ssh' }
   NeoBundle 'Konfekt/FastFold', {'type__protocol' : 'ssh' }
-
-  " ドキュメント参照
-  NeoBundle 'thinca/vim-ref', {'type__protocol' : 'ssh' }
-  NeoBundle 'yuku-t/vim-ref-ri', {'type__protocol' : 'ssh' }
 
   " タグ生成
   NeoBundle 'soramugi/auto-ctags.vim', {'type__protocol' : 'ssh'}
@@ -221,9 +214,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   " あらかじめ登録しておいた対応表に沿って変換を行う
   NeoBundle 'AndrewRadev/switch.vim', { 'type__protocol' : 'ssh' }
 
-  " コメントに関するプラグイン。prefixキーは C-_
-  NeoBundle 'tomtom/tcomment_vim', {'type__protocol' : 'ssh' }
-
   " シングルクオートとダブルクオートの入れ替え等
   NeoBundle 'tpope/vim-surround', {'type__protocol' : 'ssh' }
 
@@ -243,11 +233,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   " vimでemmetを使用する
   NeoBundle 'mattn/emmet-vim', {'type__protocol' : 'ssh' }
 
-  " Markdown
-  NeoBundle 'plasticboy/vim-markdown', {'type__protocol' : 'ssh'}
-  NeoBundle 'kannokanno/previm', {'type__protocol' : 'ssh' }
-  NeoBundle 'tyru/open-browser.vim', {'type__protocol' : 'ssh' }
-
   " 括弧の入力を楽にする
   NeoBundle 'kana/vim-smartinput', { 'type__protocol' : 'ssh' }
 
@@ -260,9 +245,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
 
   " JavaScriptの色付け
   NeoBundle 'jelera/vim-javascript-syntax', { 'type__protocol' : 'ssh' }
-
-  " React.js
-  NeoBundle 'mxw/vim-jsx', { 'type__protocol' : 'ssh' }
 
   " VimでPerl、Rubyの正規表現を使用する(置換は %S を使用することで利用可能)
   NeoBundle 'othree/eregex.vim', { 'type__protocol' : 'ssh' }
@@ -287,13 +269,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
 
   " ディレクトリのツリー表示
   NeoBundle 'scrooloose/nerdtree', { 'type__protocol' : 'ssh' }
-
-  " Yankしたもので対象テキストを上書きするプラグイン
-  NeoBundle 'kana/vim-operator-replace', { 'type__protocol' : 'ssh' }
-  NeoBundle 'kana/vim-operator-user', { 'type__protocol' : 'ssh' }
-
-  " Slimのシンタックスハイライト
-  NeoBundle 'slim-template/vim-slim', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
 NeoBundleCheck
@@ -363,16 +338,6 @@ let g:user_emmet_settings = {
 
 " Prefixキーを「Ctrl+y」 から 「Ctrl+k」に変更
 let g:user_emmet_leader_key = '<C-k>'
-
-" --------------------------------
-" vim-markdown の設定
-" --------------------------------
-" markdownモードの際、linkの表示が簡潔になる機能を無効
-let g:vim_markdown_conceal = 0
-" markdownモードのリスト表記のインデントを設定
-let g:vim_markdown_new_list_item_indent = 2
-" markdownの折りたたみなし
-let g:vim_markdown_folding_disabled=1
 
 " --------------------------------
 " vim-easymotion の設定
@@ -524,34 +489,6 @@ augroup END
 au FileType ruby map <F4>  :!ruby %<CR>
 
 """""""""""""""""""""""""""
-" tcomment_vimの設定
-"""""""""""""""""""""""""""
-" tcommentで使用する形式を追加
-if !exists('g:tcomment_types')
-  let g:tcomment_types = {}
-endif
-let g:tcomment_types = {
-      \'php_surround' : "<?php %s ?>",
-      \'eruby_surround' : "<%% %s %%>",
-      \'eruby_surround_minus' : "<%% %s -%%>",
-      \'eruby_surround_equality' : "<%%= %s %%>",
-\}
-
-" マッピングを追加
-function! SetErubyMapping2()
-  nmap <buffer> <C-_>c :TCommentAs eruby_surround<CR>
-  nmap <buffer> <C-_>- :TCommentAs eruby_surround_minus<CR>
-  nmap <buffer> <C-_>= :TCommentAs eruby_surround_equality<CR>
-
-  vmap <buffer> <C-_>c :TCommentAs eruby_surround<CR>
-  vmap <buffer> <C-_>- :TCommentAs eruby_surround_minus<CR>
-  vmap <buffer> <C-_>= :TCommentAs eruby_surround_equality<CR>
-endfunction
-
-" erubyのときだけ設定を追加
-au FileType eruby call SetErubyMapping2()
-
-"""""""""""""""""""""""""""
 " html5.vimの設定
 """""""""""""""""""""""""""
 let g:html5_event_handler_attributes_complete = 1
@@ -685,21 +622,6 @@ map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 " ,p 前のタブ
 map <silent> [Tag]p :tabprevious<CR>
-
-" ------------------------------------
-" vim-operator-replaceの設定
-" ------------------------------------
-map R <Plug>(operator-replace)
-
-" ------------------------------------
-" open-browser.vimの設定
-" 参考サイト: http://easyramble.com/open-url-with-browser-from-vim.html
-" ------------------------------------
-" disable netrw's gx mapping.
-let g:netrw_nogx = 1
-" カーソル下の文字列がURLの場合はそのページ、それ以外は検索した結果をブラウザで開く
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
 
 " ------------------------------------
 " auto-ctags.vimの設定
