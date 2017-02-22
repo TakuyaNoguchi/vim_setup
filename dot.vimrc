@@ -200,7 +200,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   \ 'type__protocol' : 'ssh'
   \ }
 
-  "NeoBundle 'Shougo/vimproc.vim', {'type__protocol' : 'ssh' }
   " Unite.vimで最近使ったファイルを表示できるようにする
   NeoBundle 'Shougo/neomru.vim', {'type__protocol' : 'ssh' }
   " Railsのファイル移動を楽にする
