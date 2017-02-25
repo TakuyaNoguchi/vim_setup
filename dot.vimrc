@@ -391,7 +391,7 @@ nmap <Leader>m :<C-u>Unite rails/model<CR>
 nmap <Leader>v :<C-u>Unite rails/view<CR>
 
 """""""""""""""""""""""""""
-"JavaScriptの設定
+" JavaScriptの設定
 """""""""""""""""""""""""""
 " この設定入れるとshiftwidthを1にしてインデントしてくれる
 let g:SimpleJsIndenter_BriefMode = 1
@@ -422,6 +422,10 @@ nmap ga <Plug>(EasyAlign)
 """""""""""""""""""""""""""
 " Ruby用の設定
 """""""""""""""""""""""""""
+" vim-rubyの設定
+" private、protectedメソッドなどのネストを1段階深くする
+let g:ruby_indent_access_modifier_style="indent"
+
 " matchitの設定
 augroup matchit
   au!
