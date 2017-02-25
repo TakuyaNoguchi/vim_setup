@@ -17,7 +17,3 @@ fi
 if [ ! -e "$HOME/.vim/indent" ]; then
   ln -sfn $(git rev-parse --show-toplevel)/indent $HOME/.vim/indent
 fi
-
-if [ ! -e "$HOME/.vim/my_snippets" ]; then
-  ln -sfn $(git rev-parse --show-toplevel)/my_snippets $HOME/.vim/my_snippets
-fi

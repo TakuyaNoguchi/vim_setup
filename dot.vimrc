@@ -200,34 +200,17 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   \ 'type__protocol' : 'ssh'
   \ }
 
-  " Unite.vimで最近使ったファイルを表示できるようにする
-  NeoBundle 'Shougo/neomru.vim', {'type__protocol' : 'ssh' }
   " Railsのファイル移動を楽にする
   NeoBundle 'basyura/unite-rails', {'type__protocol' : 'ssh' }
-  " Unite.vimでYankの履歴を見れるように
-  NeoBundle 'Shougo/neoyank.vim', {'type__protocol' : 'ssh' }
 
   " Rails向けのコマンドを提供する
   NeoBundle 'tpope/vim-rails', {'type__protocol' : 'ssh' }
 
-  " あらかじめ登録しておいた対応表に沿って変換を行う
-  NeoBundle 'AndrewRadev/switch.vim', { 'type__protocol' : 'ssh' }
-
   " シングルクオートとダブルクオートの入れ替え等
   NeoBundle 'tpope/vim-surround', {'type__protocol' : 'ssh' }
 
-  " ログファイルを色づけしてくれる
-  NeoBundle 'vim-scripts/AnsiEsc.vim', {'type__protocol' : 'ssh' }
-
   " 行末の半角スペースを可視化
   NeoBundle 'bronson/vim-trailing-whitespace', {'type__protocol' : 'ssh' }
-
-  " vimでスニペットを利用するための設定
-  NeoBundle 'Shougo/neosnippet', {'type__protocol' : 'ssh' }
-  NeoBundle 'Shougo/neosnippet-snippets', {'type__protocol' : 'ssh' }
-
-  " 開いているコードを素早く実行する
-  NeoBundle 'thinca/vim-quickrun', { 'type__protocol' : 'ssh'}
 
   " vimでemmetを使用する
   NeoBundle 'mattn/emmet-vim', {'type__protocol' : 'ssh' }
@@ -265,9 +248,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
 
   " ステータスラインの表示を変更
   NeoBundle 'itchyny/lightline.vim', { 'type__protocol' : 'ssh' }
-
-  " ディレクトリのツリー表示
-  NeoBundle 'scrooloose/nerdtree', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
 NeoBundleCheck
@@ -376,7 +356,6 @@ let g:unite_enable_smart_case = 1
 nnoremap <silent> ,ub  :<C-u>Unite buffer<CR>
 nnoremap <silent> ,ul  :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur  :<C-u>Unite file_mru buffer<CR>
-nnoremap <silent> ,up  :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,uf  :<C-u>Unite file/new<CR>
 nnoremap <silent> ,ud  :<C-u>Unite directory/new<CR>
 nnoremap <silent> ,ug  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
@@ -386,45 +365,6 @@ nmap <Leader>b :<C-u>Unite buffer<CR>
 nmap <Leader>d :<C-u>Unite directory/new<CR>
 nmap <Leader>f :<C-u>Unite file/new<CR>
 
-" unite grep に ag(The Silver Searcher) を使用
-"if executable('ag')
-"  let g:unite_source_grep_command = 'ag'
-"  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-"  let g:unite_source_grep_recursive_opt = ''
-"endif
-
-"------------------------------------
-" neosnippet
-"------------------------------------
-let s:default_snippet = '~/.vim/bundle/neosnippet-snippets/neosnippets/'
-let s:my_snippet = '~/.vim/my_snippets/' " 自分で定義するSnippet
-let g:neosnippet#snippets_directory = s:my_snippet
-
-let g:neosnippet#snippets_directory = s:default_snippet . ',' . s:my_snippet
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
-" RailsのSnippetの設定
-autocmd User Rails.view* NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.view.snip
-autocmd User Rails.controller* NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.controller.snip
-autocmd User Rails/db/migrate/* NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.migrate.snip
-autocmd User Rails/config/routes.rb NeoSnippetSource ~/.vim/my_snippets/ruby_snip/ruby.rails.route.snip
 
 """"""""""""""""""""""""""""""
 " unite-railsの設定
@@ -518,69 +458,6 @@ autocmd FileType eruby exec 'set filetype=' . 'eruby.' . b:eruby_subtype
 " 挿入モードから抜ける時に、自動的にpasteモードをOFFにする
 autocmd InsertLeave * set nopaste
 
-" Switch.vimの設定
-function! s:separate_defenition_to_each_filetypes(ft_dictionary)
-  let result = {}
-
-  for [filetypes, value] in items(a:ft_dictionary)
-    for ft in split(filetypes, ",")
-      if !has_key(result, ft)
-        let result[ft] = []
-      endif
-
-      call extend(result[ft], copy(value))
-    endfor
-  endfor
-
-  return result
-endfunction
-
-" ------------------------------------
-" switch.vimの設定
-" ------------------------------------
-nnoremap ! :Switch<CR>
-let s:switch_definition = {
-      \ '*': [
-      \   ['is', 'are']
-      \ ],
-      \ 'ruby,eruby,haml' : [
-      \   ['if', 'unless'],
-      \   ['while', 'until'],
-      \   ['.blank?', '.present?'],
-      \   ['include', 'extend'],
-      \   ['class', 'module'],
-      \   ['.inject', '.delete_if'],
-      \   ['.map', '.map!'],
-      \   ['attr_accessor', 'attr_reader', 'attr_writer'],
-      \ ],
-      \ 'markdown' : [
-      \   ['[ ]', '[x]']
-      \ ]
-      \ }
-
-let s:switch_definition = s:separate_defenition_to_each_filetypes(s:switch_definition)
-function! s:define_switch_mappings()
-  if exists('b:switch_custom_definitions')
-    unlet b:switch_custom_definitions
-  endif
-
-  let dictionary = []
-  for filetype in split(&ft, '\.')
-    if has_key(s:switch_definition, filetype)
-      let dictionary = extend(dictionary, s:switch_definition[filetype])
-    endif
-  endfor
-
-  if has_key(s:switch_definition, '*')
-    let dictionary = extend(dictionary, s:switch_definition['*'])
-  endif
-endfunction
-
-augroup SwitchSetting
-  autocmd!
-  autocmd Filetype * if !empty(split(&ft, '\.')) | call <SID>define_switch_mappings() | endif
-augroup END
-
 " ------------------------------------
 " lightline.vimの設定
 " ------------------------------------
@@ -588,16 +465,6 @@ augroup END
 let g:lightline = {
       \ 'colorscheme': 'wombat'
       \ }
-
-" ------------------------------------
-" NERDTreeの設定
-" ------------------------------------
-nnoremap <silent><C-g> :NERDTreeToggle<CR>
-
-" ファイル形式の検出の有効化する
-" ファイル形式別プラグインのロードを有効化する
-" ファイル形式別インデントのロードを有効化する
-filetype plugin indent on
 
 " ------------------------------------
 " タブの設定
