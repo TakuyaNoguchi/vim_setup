@@ -22,6 +22,13 @@ set pastetoggle=<C-@>
 set noswapfile
 " BackSpace、Deleteを有効化
 set backspace=indent,eol,start
+" インデントの設定
+set autoindent
+set smartindent
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 " カーソル後の文字削除
 inoremap <silent> <C-d> <Del>
 " バックアップファイルを作成しない
@@ -33,12 +40,6 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 let loaded_matchparen = 1
 " ハイライトを有効化する
 syntax enable
-" 挿入モードでTABを挿入するとき、代わりに適切な数の空白を使う
-set expandtab
-" 新しい行を開始したとき、新しい行のインデントを現在行と同じにする
-set autoindent
-set tabstop=2
-set shiftwidth=2
 " ステータスラインの表示のために必要
 set laststatus=2
 set t_Co=256
@@ -250,6 +251,9 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   NeoBundle 'itchyny/lightline.vim', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
+" ここに記述しないとプラグインのインデントが上手く動作しない
+filetype plugin indent on
+
 NeoBundleCheck
 
 " --------------------------------
@@ -344,7 +348,7 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 """"""""""""""""""""""""""""""
-" Unit.vimの設定
+" Unite.vimの設定
 """"""""""""""""""""""""""""""
 " http://blog.remora.cx/2010/12/vim-ref-with-unite.html
 " 入力モードで開始する
