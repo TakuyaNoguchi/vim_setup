@@ -15,9 +15,8 @@ set clipboard^=unnamedplus
 " カレントディレクトリを開いているファイルのディレクトリに自動的に切り替える
 set autochdir
 " Insertモード内でpasteモードへの切り替えを行う
-" 「Ctrl-@ -> Ctrl-Shift-v」のように入力して貼り付けることを想定
-" Normalモードで :a! または :i! を使用してペーストするようにする
-set pastetoggle=<C-@>
+" 「Ctrl-] -> Ctrl-Shift-v」のように入力して貼り付けることを想定
+set pastetoggle=<C-]>
 " swapファイルを生成しない
 set noswapfile
 " BackSpace、Deleteを有効化
@@ -29,6 +28,8 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+" ESCの反応に関する設定
+set timeout timeoutlen=50
 " カーソル後の文字削除
 inoremap <silent> <C-d> <Del>
 " バックアップファイルを作成しない
@@ -105,12 +106,13 @@ nnoremap x "_x
 
 " IMEをノーマルモードに切り替わる時にOFFにする
 if executable('fcitx-remote')
-  function! ImInActivate()
-    call system('fcitx-remote -c')
+  function! Fcitx2en()
+    let s:input_status = system("fcitx-remote")
+    if s:input_status == 2
+      let l:a = system("fcitx-remote -c")
+    endif
   endfunction
-  " Insert-modeのスクロールでABCDが入力されてしまう点に注意。
-  " set nocompatible を設定しても矢印キーの入力時にABCDが入力されてしまうため
-  inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
+  autocmd InsertLeave * call Fcitx2en()
 endif
 
 " Ruby, JSのファイルを編集する際は行末の空白を削除する
