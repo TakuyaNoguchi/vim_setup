@@ -29,6 +29,8 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 " ESCの反応に関する設定
+set notimeout
+set ttimeout
 set timeout timeoutlen=50
 " カーソル後の文字削除
 inoremap <silent> <C-d> <Del>
