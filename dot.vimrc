@@ -331,10 +331,10 @@ let g:user_emmet_leader_key = '<C-k>'
 " --------------------------------
 " vim-easymotion の設定
 " --------------------------------
+" デフォルトのマッピングはOFF
+let g:EasyMotion_do_mapping = 0
 " ホームポジションに近いキーを使う
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
-" 「;」 + 何かにマッピング
-let g:EasyMotion_leader_key=";"
 " 1 ストローク選択を優先する
 let g:EasyMotion_grouping=1
 " 大文字と小文字を区別しない
@@ -352,6 +352,11 @@ map <Leader>s <Plug>(easymotion-s2)
 " j で現在行以降、k で現在行以前を対象に検索
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+" :h easymotion-command-line
+nmap g/ <Plug>(easymotion-sn)
+xmap g/ <Plug>(easymotion-sn)
+omap g/ <Plug>(easymotion-tn)
 
 """"""""""""""""""""""""""""""
 " Unite.vimの設定
