@@ -2,6 +2,8 @@
 set encoding=utf-8
 scriptencoding utf-8
 set fileencoding=utf-8 " 保存時の文字コード
+" 全角記号の表示に関する設定
+set ambiwidth=double
 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
