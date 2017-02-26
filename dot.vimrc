@@ -33,7 +33,7 @@ set expandtab
 " ESCの反応に関する設定
 set notimeout
 set ttimeout
-set timeout timeoutlen=50
+set timeoutlen=50
 " カーソル後の文字削除
 inoremap <silent> <C-d> <Del>
 " バックアップファイルを作成しない
