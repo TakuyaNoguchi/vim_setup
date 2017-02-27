@@ -171,32 +171,32 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
-NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
+NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
   " コード補完
-  NeoBundle 'Shougo/neocomplete.vim', {'type__protocol' : 'ssh' }
-  NeoBundle 'Konfekt/FastFold', {'type__protocol' : 'ssh' }
+  NeoBundle 'Shougo/neocomplete.vim', { 'type__protocol' : 'ssh' }
+  NeoBundle 'Konfekt/FastFold', { 'type__protocol' : 'ssh' }
 
   " タグ生成
-  NeoBundle 'soramugi/auto-ctags.vim', {'type__protocol' : 'ssh'}
+  NeoBundle 'soramugi/auto-ctags.vim', { 'type__protocol' : 'ssh'}
 
-  NeoBundle 'vim-ruby/vim-ruby', {'type__protocol' : 'ssh' }
+  NeoBundle 'vim-ruby/vim-ruby', { 'type__protocol' : 'ssh' }
 
   " Rubyのブロックを対象にするテキストオブジェクト(r)を追加する
   " dir でブロックを削除、yir でブロックをヤンクなど
-  NeoBundle 'kana/vim-textobj-user', {'type__protocol': 'ssh'}
-  NeoBundle 'rhysd/vim-textobj-ruby', {'type__protocol' : 'ssh'}
+  NeoBundle 'kana/vim-textobj-user', { 'type__protocol': 'ssh'}
+  NeoBundle 'rhysd/vim-textobj-ruby', { 'type__protocol' : 'ssh'}
 
   " endの自動補完
-  NeoBundle 'tpope/vim-endwise', {'type__protocol' : 'ssh' }
+  NeoBundle 'tpope/vim-endwise', { 'type__protocol' : 'ssh' }
 
   " カーソル移動を楽にする(ace-jump-mode のようなもの)
-  NeoBundle 'Lokaltog/vim-easymotion', {'type__protocol' : 'ssh' }
+  NeoBundle 'Lokaltog/vim-easymotion', { 'type__protocol' : 'ssh' }
 
   " % で対応する括弧に移動する機能を拡張
-  NeoBundle 'tmhedberg/matchit', {'type__protocol' : 'ssh' }
+  NeoBundle 'tmhedberg/matchit', { 'type__protocol' : 'ssh' }
 
   " ファイルオープンを便利に
-  NeoBundle 'Shougo/unite.vim', {'type__protocol' : 'ssh' }
+  NeoBundle 'Shougo/unite.vim', { 'type__protocol' : 'ssh' }
   NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
     \ 'windows' : 'make -f make_mingw32.mak',
@@ -208,19 +208,19 @@ NeoBundleFetch 'Shougo/neobundle.vim', {'type__protocol' : 'ssh' }
   \ }
 
   " Railsのファイル移動を楽にする
-  NeoBundle 'basyura/unite-rails', {'type__protocol' : 'ssh' }
+  NeoBundle 'basyura/unite-rails', { 'type__protocol' : 'ssh' }
 
   " Rails向けのコマンドを提供する
-  NeoBundle 'tpope/vim-rails', {'type__protocol' : 'ssh' }
+  NeoBundle 'tpope/vim-rails', { 'type__protocol' : 'ssh' }
 
   " シングルクオートとダブルクオートの入れ替え等
-  NeoBundle 'tpope/vim-surround', {'type__protocol' : 'ssh' }
+  NeoBundle 'tpope/vim-surround', { 'type__protocol' : 'ssh' }
 
   " 行末の半角スペースを可視化
-  NeoBundle 'bronson/vim-trailing-whitespace', {'type__protocol' : 'ssh' }
+  NeoBundle 'bronson/vim-trailing-whitespace', { 'type__protocol' : 'ssh' }
 
   " vimでemmetを使用する
-  NeoBundle 'mattn/emmet-vim', {'type__protocol' : 'ssh' }
+  NeoBundle 'mattn/emmet-vim', { 'type__protocol' : 'ssh' }
 
   " 括弧の入力を楽にする
   NeoBundle 'kana/vim-smartinput', { 'type__protocol' : 'ssh' }
