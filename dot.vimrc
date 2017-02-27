@@ -347,8 +347,8 @@ map f <Plug>(easymotion-fl)
 map t <Plug>(easymotion-tl)
 map F <Plug>(easymotion-Fl)
 map T <Plug>(easymotion-Tl)
+map s <Plug>(easymotion-s2)
 
-map <Leader>s <Plug>(easymotion-s2)
 " j で現在行以降、k で現在行以前を対象に検索
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
