@@ -16,9 +16,9 @@ set clipboard&
 set clipboard^=unnamedplus
 " カレントディレクトリを開いているファイルのディレクトリに自動的に切り替える
 set autochdir
-" Insertモード内でpasteモードへの切り替えを行う
-" 「Ctrl-e -> Ctrl-Shift-v」のように入力して貼り付けることを想定
-set pastetoggle=<C-e>
+" Insertモード内でpasteモードへの切り替えを行う(Normalモードにもキーバインドは反映される)
+" 「F12 -> Ctrl-Shift-v」のように入力して貼り付けることを想定
+set pastetoggle=<F12>
 " swapファイルを生成しない
 set noswapfile
 " BackSpace、Deleteを有効化
