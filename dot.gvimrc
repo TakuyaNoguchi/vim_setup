@@ -1,0 +1,13 @@
+" カーソルの点滅を止める
+set guicursor=a:blinkon0
+" メニューバーを非表示にする
+set guioptions-=m
+" ツールバーを非表示にする
+set guioptions-=T
+" 左右のスクロールバーを非表示にする
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+" 水平スクロールバーを非表示にする
+set guioptions-=b
