@@ -255,6 +255,11 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
 
   " ステータスラインの表示を変更
   NeoBundle 'itchyny/lightline.vim', { 'type__protocol' : 'ssh' }
+
+  " Markdown
+  NeoBundle 'plasticboy/vim-markdown', {'type__protocol' : 'ssh'}
+  NeoBundle 'kannokanno/previm', {'type__protocol' : 'ssh' }
+  NeoBundle 'tyru/open-browser.vim', {'type__protocol' : 'ssh' }
 call neobundle#end()
 
 " ここに記述しないとプラグインのインデントが上手く動作しない
@@ -517,3 +522,13 @@ map <silent> [Tag]p :tabprevious<CR>
 "let g:auto_ctags_directory_list = ['.git', '.svn']
 " ctagsのオプション
 " let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
+
+" --------------------------------
+" vim-markdown の設定
+" --------------------------------
+" markdownモードの際、linkの表示が簡潔になる機能を無効
+let g:vim_markdown_conceal = 0
+" markdownモードのリスト表記のインデントを設定
+let g:vim_markdown_new_list_item_indent = 2
+" markdownの折りたたみなし
+let g:vim_markdown_folding_disabled=1
