@@ -111,10 +111,7 @@ nnoremap x "_x
 " IMEをノーマルモードに切り替わる時にOFFにする
 if executable('fcitx-remote')
   function! Fcitx2en()
-    let s:input_status = system("fcitx-remote")
-    if s:input_status == 2
-      let l:a = system("fcitx-remote -c")
-    endif
+    let l:a = system("fcitx-remote -c")
   endfunction
   autocmd InsertLeave * call Fcitx2en()
 endif
