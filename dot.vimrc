@@ -370,12 +370,13 @@ let g:unite_enable_start_insert=1
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
-nnoremap <silent> ,ub  :<C-u>Unite buffer<CR>
-nnoremap <silent> ,ul  :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur  :<C-u>Unite file_mru buffer<CR>
-nnoremap <silent> ,uf  :<C-u>Unite file/new<CR>
-nnoremap <silent> ,ud  :<C-u>Unite directory/new<CR>
-nnoremap <silent> ,ug  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> ,ub   :<C-u>Unite buffer<CR>
+nnoremap <silent> ,ul   :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,ur   :<C-u>Unite file_mru buffer<CR>
+nnoremap <silent> ,uf   :<C-u>Unite file/new<CR>
+nnoremap <silent> ,ud   :<C-u>Unite directory/new<CR>
+nnoremap <silent> ,ug   :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> ;us   :<C-u>Unite file_rec/async:!<CR>
 
 " よく使うコマンドをLeader(Space)との組み合わせで実行できるように設定
 nmap <Leader>b :<C-u>Unite buffer<CR>
