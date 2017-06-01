@@ -424,7 +424,7 @@ let g:jscomplete_use = ['dom', 'moz', 'es6th']
 """""""""""""""""""""""""""
 " コードの静的解析を行うための設定
 let g:syntastic_mode_map = {
-      \ "mode" : "active",
+      \ "mode" : "passive",
       \ "active_filetypes" : ["ruby", "javascript"],
 \}
 
