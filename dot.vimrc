@@ -194,6 +194,8 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
 
   " ファイルオープンを便利に
   NeoBundle 'Shougo/unite.vim', { 'type__protocol' : 'ssh' }
+  " 最近開いたファイルを開くためのプラグイン
+  NeoBundle 'Shougo/neomru.vim', { 'type__protocol' : 'ssh' }
   NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
     \ 'windows' : 'make -f make_mingw32.mak',
