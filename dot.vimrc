@@ -262,6 +262,12 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
 
   " ディレクトリのツリー表示
   NeoBundle 'scrooloose/nerdtree', { 'type__protocol' : 'ssh' }
+
+  " ColorScheme
+  NeoBundle 'jnurmine/Zenburn', { 'type__protocol' : 'ssh' }
+
+  " タブバーの色
+  NeoBundle 'drmingdrmer/vim-tabbar', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
 " ここに記述しないとプラグインのインデントが上手く動作しない

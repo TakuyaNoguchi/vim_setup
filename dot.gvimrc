@@ -20,3 +20,9 @@ set guifont=Ricty\ Diminished\ 13.5
 set nocursorline
 " 挿入モードの時のみ、カーソル行をハイライトする
 autocmd InsertEnter,InsertLeave * set cursorline!
+" ColorSchemeの設定
+colorscheme zenburn
+" タブバーの色
+hi TabLineFill cterm=none ctermfg=grey  ctermbg=cyan
+hi TabLine     cterm=none ctermfg=white ctermbg=cyan
+hi TabLineSel  cterm=none ctermfg=black ctermbg=white
