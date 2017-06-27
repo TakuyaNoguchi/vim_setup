@@ -294,12 +294,12 @@ let g:neocomplete#max_list = 20
 if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
 endif
-
 let g:neocomplete#auto_completion_start_length = 1
 let g:neocomplete#sources#buffer#cache_limit_size = 500000
 let g:neocomplete#data_directory = $HOME.'/.vim/cache/neocompl'
 let g:neocomplete#min_keyword_length = 3
 let g:neocomplete#enable_refresh_always = 1
+let g:neocomplete#lock_iminsert = 1
 if !exists('g:neocomplete#keyword_patterns')
         let g:neocomplete#keyword_patterns = {}
 endif
@@ -308,6 +308,10 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 call neocomplete#custom#source('_', 'converters',
       \ ['converter_remove_overlap', 'converter_remove_last_paren',
       \  'converter_delimiter', 'converter_abbr'])
+
+" filetype=ruby で tag 補完を無効にする
+call neocomplete#custom#source('tag',
+      \ 'disabled_filetypes', {'ruby' : 1})
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
@@ -486,7 +490,7 @@ let g:sass_started_dirs = []
 
 " erbの静的解析で表示したくないWarning
 let g:syntastic_eruby_ruby_quiet_messages =
-    \ {'regex': 'possibly useless use of a variable in void context'}
+    \ {'regex': ['possibly useless use of a variable in void context','possibly useless use of + in void context']}
 
 " ERBに関する設定
 autocmd FileType eruby exec 'set filetype=' . 'eruby.' . b:eruby_subtype
