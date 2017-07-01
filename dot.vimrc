@@ -299,9 +299,8 @@ let g:neocomplete#sources#buffer#cache_limit_size = 500000
 let g:neocomplete#data_directory = $HOME.'/.vim/cache/neocompl'
 let g:neocomplete#min_keyword_length = 3
 let g:neocomplete#enable_refresh_always = 1
-let g:neocomplete#lock_iminsert = 1
 if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
+  let g:neocomplete#keyword_patterns = {}
 endif
 
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
@@ -315,7 +314,6 @@ call neocomplete#custom#source('tag',
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
