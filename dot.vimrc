@@ -38,9 +38,10 @@ set timeoutlen=50
 inoremap <silent> <C-d> <Del>
 " バックアップファイルを作成しない
 set nobackup
-" 検索ワードのハイライトを有効(C-lで一解除)
+" 検索ワードのハイライトを有効(C-l, C-hで一解除)
 set hlsearch
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> <C-h> :<C-u>nohlsearch<CR><C-l>
 " 括弧のハイライトを消す
 let loaded_matchparen = 1
 " ハイライトを有効化する
