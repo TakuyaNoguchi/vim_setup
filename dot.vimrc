@@ -271,6 +271,10 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
 
   " 選択範囲の拡大
   NeoBundle 'terryma/vim-expand-region', { 'type__protocol': 'ssh' }
+
+  " メモを取るためのプラグイン
+  NeoBundle 'fuenor/qfixgrep', { 'type__protocol' : 'ssh' }
+  NeoBundle 'fuenor/qfixhowm', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
 " ここに記述しないとプラグインのインデントが上手く動作しない
@@ -551,6 +555,20 @@ let g:vim_markdown_folding_disabled=1
 " NERDTreeの設定
 " ------------------------------------
 nnoremap <silent><C-g> :NERDTreeToggle<CR>
+
+" ------------------------------------
+" qfixhowmの設定
+" ------------------------------------
+" 保存先ディレクトリ
+let howm_dir = '~/howm_memo'
+" qFixhowmの拡張子をmd
+let howm_filename = '%Y/%m/%d/%H%M%S.md'
+
+" ファイルタイプをmarkdownに変更
+let QFixHowm_FileType = 'markdown'
+
+" タイトル記号を # に変更
+let QFixHowm_Title = '#'
 
 " ------------------------------------
 " vim-expand-region の設定
