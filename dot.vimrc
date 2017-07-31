@@ -42,6 +42,10 @@ set nobackup
 set hlsearch
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap <silent> <C-h> :<C-u>nohlsearch<CR><C-l>
+" escをC-jに割り当てる
+cnoremap <C-j> <esc>
+inoremap <C-j> <esc>
+vnoremap <C-j> <esc>
 " 括弧のハイライトを消す
 let loaded_matchparen = 1
 " ハイライトを有効化する
