@@ -271,9 +271,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
   " タブバーの色
   NeoBundle 'drmingdrmer/vim-tabbar', { 'type__protocol' : 'ssh' }
 
-  " 選択範囲の拡大
-  NeoBundle 'terryma/vim-expand-region', { 'type__protocol': 'ssh' }
-
   " メモを取るためのプラグイン
   NeoBundle 'fuenor/qfixgrep', { 'type__protocol' : 'ssh' }
   NeoBundle 'fuenor/qfixhowm', { 'type__protocol' : 'ssh' }
