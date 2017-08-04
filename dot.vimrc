@@ -265,9 +265,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
   NeoBundle 'kannokanno/previm', {'type__protocol' : 'ssh' }
   NeoBundle 'tyru/open-browser.vim', {'type__protocol' : 'ssh' }
 
-  " ディレクトリのツリー表示
-  NeoBundle 'scrooloose/nerdtree', { 'type__protocol' : 'ssh' }
-
   " ColorScheme
   NeoBundle 'jnurmine/Zenburn', { 'type__protocol' : 'ssh' }
 
@@ -555,11 +552,6 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_new_list_item_indent = 2
 " markdownの折りたたみなし
 let g:vim_markdown_folding_disabled=1
-
-" ------------------------------------
-" NERDTreeの設定
-" ------------------------------------
-nnoremap <silent><C-g> :NERDTreeToggle<CR>
 
 " ------------------------------------
 " qfixhowmの設定
