@@ -407,7 +407,6 @@ nmap <Leader>b :<C-u>Unite buffer<CR>
 nmap <Leader>d :<C-u>Unite directory/new<CR>
 nmap <Leader>f :<C-u>Unite file/new<CR>
 
-
 """"""""""""""""""""""""""""""
 " unite-railsの設定
 """"""""""""""""""""""""""""""
@@ -463,6 +462,8 @@ nmap ga <Plug>(EasyAlign)
 " vim-rubyの設定
 " private、protectedメソッドなどのネストを1段階深くする
 let g:ruby_indent_access_modifier_style="indent"
+" . が行頭の時のインデント位置を修正
+let g:ruby_indent_block_style = 'do'
 
 " matchitの設定
 augroup matchit
