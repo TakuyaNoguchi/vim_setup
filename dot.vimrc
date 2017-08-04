@@ -569,11 +569,3 @@ let QFixHowm_FileType = 'markdown'
 
 " タイトル記号を # に変更
 let QFixHowm_Title = '#'
-
-" ------------------------------------
-" vim-expand-region の設定
-" ------------------------------------
-" 選択範囲の拡大
-vmap v <Plug>(expand_region_expand)
-" 選択範囲の縮小
-vmap <C-v> <Plug>(expand_region_shrink)
