@@ -268,9 +268,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
   " ColorScheme
   NeoBundle 'jnurmine/Zenburn', { 'type__protocol' : 'ssh' }
 
-  " タブバーの色
-  NeoBundle 'drmingdrmer/vim-tabbar', { 'type__protocol' : 'ssh' }
-
   " メモを取るためのプラグイン
   NeoBundle 'fuenor/qfixgrep', { 'type__protocol' : 'ssh' }
   NeoBundle 'fuenor/qfixhowm', { 'type__protocol' : 'ssh' }
@@ -509,29 +506,6 @@ autocmd InsertLeave * set nopaste
 let g:lightline = {
       \ 'colorscheme': 'wombat'
       \ }
-
-" ------------------------------------
-" タブの設定
-" ------------------------------------
-" 引用元サイト(http://qiita.com/wadako111/items/755e753677dd72d8036d)
-set showtabline=2 " 常にタブラインを表示
-" The prefix key.
-nnoremap [Tag] <Nop>
-nmap , [Tag]
-" Tab jump
-" ,1 で1番左のタブ、,2 で1番左から2番目のタブにジャンプ
-for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
-endfor
-
-" ,c 新しいタブを一番右に作る
-map <silent> [Tag]c :tablast <bar> tabnew<CR>
-" ,x タブを閉じる
-map <silent> [Tag]x :tabclose<CR>
-" ,n 次のタブ
-map <silent> [Tag]n :tabnext<CR>
-" ,p 前のタブ
-map <silent> [Tag]p :tabprevious<CR>
 
 " ------------------------------------
 " auto-ctags.vimの設定
