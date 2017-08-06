@@ -289,8 +289,6 @@ let g:neocomplete#enable_smart_case = 1
 " _(アンダースコア)区切りの補完を有効化
 let g:neocomplete#enable_underbar_completion = 1
 let g:neocomplete#enable_camel_case_completion  =  1
-" 日本語入力時、無効化
-let g:neocomplete#lock_iminsert = 1
 " ポップアップメニューで表示される候補の数
 let g:neocomplete#max_list = 20
 if !exists('g:neocomplete#force_omni_input_patterns')
