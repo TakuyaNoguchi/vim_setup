@@ -176,6 +176,9 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
   " ファイルオープンを便利に
   NeoBundle 'Shougo/unite.vim', { 'type__protocol' : 'ssh' }
 
+  " 最近開いたファイルを表示
+  NeoBundle 'Shougo/neomru.vim', { 'type__protocol' : 'ssh' }
+
   " Railsのファイル移動を楽にする
   NeoBundle 'basyura/unite-rails', { 'type__protocol' : 'ssh' }
 
@@ -347,6 +350,7 @@ let g:unite_enable_smart_case = 1
 nnoremap <silent> ,ub   :<C-u>Unite buffer<CR>
 nnoremap <silent> ,ul   :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur   :<C-u>Unite file_mru buffer<CR>
+nnoremap <Leader>r      :<C-u>Unite file_mru buffer<CR>
 nnoremap <silent> ,uf   :<C-u>Unite file/new<CR>
 nnoremap <silent> ,ud   :<C-u>Unite directory/new<CR>
 nnoremap <silent> ,ug   :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
