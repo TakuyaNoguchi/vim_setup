@@ -40,12 +40,11 @@ inoremap <silent> <C-d> <Del>
 set nobackup
 " 検索ワードのハイライトを有効(C-l, C-hで一解除)
 set hlsearch
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-nnoremap <silent> <C-h> :<C-u>nohlsearch<CR><C-l>
-" escをC-jに割り当てる
-cnoremap <C-j> <esc>
-inoremap <C-j> <esc>
-vnoremap <C-j> <esc>
+nnoremap <silent> <C-h> :<C-u>nohlsearch<CR>
+" escをC-kに割り当てる
+cnoremap <C-k> <esc>
+inoremap <C-k> <esc>
+vnoremap <C-k> <esc>
 " 括弧のハイライトを消す
 let loaded_matchparen = 1
 " ハイライトを有効化する
@@ -62,29 +61,6 @@ augroup END
 " カーソル位置を記憶する
 au BufWritePost * if &filetype != "gitcommit" | mkview | endif
 autocmd BufReadPost * if &filetype != "gitcommit" | loadview | endif
-
-" 編集中のファイルパスをクリップボードにコピーする
-function! g:CopyFilePath()
-  let @* = expand("%:p")
-  echo @*
-endfunction
-
-" 編集中のファイル名をクリップボードにコピーする
-function! g:CopyFileName()
-  let @* = expand("%:t")
-  echo @*
-endfunction
-
-" 編集中のファイルの存在するフォルダのパスをクリップボードにコピーする
-function! g:CopyFolderPath()
-  let @* = expand("%:p:h")
-  echo @*
-endfunction
-
-" コマンドとして実行できるようにする
-command! CopyFilePath :call g:CopyFilePath()
-command! CopyFileName :call g:CopyFileName()
-command! CopyFolderPath :call g:CopyFolderPath()
 
 " 1つ前に実行したコマンドを実行する
 nnoremap c. q:k<CR>
@@ -114,8 +90,8 @@ cnoremap <Esc><C-F> <S-Right>
 
 " 削除キーでyankしない
 nnoremap x "_x
-"nnoremap d "_d
-"nnoremap D "_D
+nnoremap d "_d
+nnoremap D "_D
 
 " IMEをノーマルモードに切り替わる時にOFFにする
 if executable('fcitx-remote')
@@ -203,17 +179,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
 
   " ファイルオープンを便利に
   NeoBundle 'Shougo/unite.vim', { 'type__protocol' : 'ssh' }
-  " 最近開いたファイルを開くためのプラグイン
-  NeoBundle 'Shougo/neomru.vim', { 'type__protocol' : 'ssh' }
-  NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-    \ 'windows' : 'make -f make_mingw32.mak',
-    \ 'cygwin' : 'make -f make_cygwin.mak',
-    \ 'mac' : 'make -f make_mac.mak',
-    \ 'unix' : 'make -f make_unix.mak',
-    \ },
-  \ 'type__protocol' : 'ssh'
-  \ }
 
   " Railsのファイル移動を楽にする
   NeoBundle 'basyura/unite-rails', { 'type__protocol' : 'ssh' }
@@ -271,10 +236,6 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
 
   " ColorScheme
   NeoBundle 'jnurmine/Zenburn', { 'type__protocol' : 'ssh' }
-
-  " メモを取るためのプラグイン
-  NeoBundle 'fuenor/qfixgrep', { 'type__protocol' : 'ssh' }
-  NeoBundle 'fuenor/qfixhowm', { 'type__protocol' : 'ssh' }
 call neobundle#end()
 
 " ここに記述しないとプラグインのインデントが上手く動作しない
@@ -346,9 +307,6 @@ let g:user_emmet_settings = {
     \    },
     \   'indentation': '  '
     \ }
-
-" Prefixキーを「Ctrl+y」 から 「Ctrl+k」に変更
-let g:user_emmet_leader_key = '<C-k>'
 
 " --------------------------------
 " vim-easymotion の設定
@@ -513,11 +471,11 @@ let g:lightline = {
 " auto-ctags.vimの設定
 " ------------------------------------
 " ファイル保存時に自動タグ生成(:Ctags で手動生成)
-"let g:auto_ctags = 1
+let g:auto_ctags = 1
 " tagsファイルの生成先ディレクトリ(左に書いたものが優先される)
-"let g:auto_ctags_directory_list = ['.git', '.svn']
+let g:auto_ctags_directory_list = ['.git', '.svn']
 " ctagsのオプション
-" let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
+let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
 " --------------------------------
 " vim-markdown の設定
@@ -528,17 +486,3 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_new_list_item_indent = 2
 " markdownの折りたたみなし
 let g:vim_markdown_folding_disabled=1
-
-" ------------------------------------
-" qfixhowmの設定
-" ------------------------------------
-" 保存先ディレクトリ
-let howm_dir = '~/howm_memo'
-" qFixhowmの拡張子をmd
-let howm_filename = '%Y/%m/%d/%H%M%S.md'
-
-" ファイルタイプをmarkdownに変更
-let QFixHowm_FileType = 'markdown'
-
-" タイトル記号を # に変更
-let QFixHowm_Title = '#'
