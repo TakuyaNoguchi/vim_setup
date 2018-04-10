@@ -65,10 +65,6 @@ autocmd BufReadPost * if &filetype != "gitcommit" | loadview | endif
 " 1つ前に実行したコマンドを実行する
 nnoremap c. q:k<CR>
 
-" バッファの切り替えのキーバインド
-nmap <C-n> :bn<CR>
-nmap <C-p> :bp<CR>
-
 " バッファの移動を楽にする
 nnoremap <silent> gp :bprevious<CR>
 nnoremap <silent> gn :bnext<CR>
