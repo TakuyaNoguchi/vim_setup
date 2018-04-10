@@ -400,7 +400,8 @@ let g:syntastic_mode_map = {
       \ "active_filetypes" : ["ruby", "javascript"],
 \}
 
-nnoremap <C-w>t :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+let g:syntastic_ruby_checkers = ['rubocop']
+nnoremap <Leader>s :SyntasticCheck<CR>
 
 """""""""""""""""""""""""""
 " vim-easy-alignの設定
