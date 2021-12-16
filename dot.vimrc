@@ -136,111 +136,92 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
+
 " -------------------------------
-" NeoBundle
+" vim-plug
 " -------------------------------
-if has('vim_starting')
-  if &compatible
-    set nocompatible
-  endif
+call plug#begin('~/.vim/plugged')
+Plug 'Shougo/neocomplete.vim'
+Plug 'Konfekt/FastFold'
 
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+" タグ生成
+Plug 'soramugi/auto-ctags.vim'
 
-call neobundle#begin(expand('~/.vim/bundle'))
+Plug 'vim-ruby/vim-ruby'
 
-NeoBundleFetch 'Shougo/neobundle.vim', { 'type__protocol' : 'ssh' }
-  " コード補完
-  NeoBundle 'Shougo/neocomplete.vim', { 'type__protocol' : 'ssh' }
-  NeoBundle 'Konfekt/FastFold', { 'type__protocol' : 'ssh' }
+" Rubyのブロックを対象にするテキストオブジェクト(r)を追加する
+" dir でブロックを削除、yir でブロックをヤンクなど
+Plug 'kana/vim-textobj-user'
+Plug 'rhysd/vim-textobj-ruby'
 
-  " タグ生成
-  NeoBundle 'soramugi/auto-ctags.vim', { 'type__protocol' : 'ssh'}
+" endの自動補完
+Plug 'tpope/vim-endwise'
 
-  NeoBundle 'vim-ruby/vim-ruby', { 'type__protocol' : 'ssh' }
+" カーソル移動を楽にする(ace-jump-mode のようなもの)
+Plug 'Lokaltog/vim-easymotion'
 
-  " Rubyのブロックを対象にするテキストオブジェクト(r)を追加する
-  " dir でブロックを削除、yir でブロックをヤンクなど
-  NeoBundle 'kana/vim-textobj-user', { 'type__protocol': 'ssh'}
-  NeoBundle 'rhysd/vim-textobj-ruby', { 'type__protocol' : 'ssh'}
+" % で対応する括弧に移動する機能を拡張
+Plug 'tmhedberg/matchit'
 
-  " endの自動補完
-  NeoBundle 'tpope/vim-endwise', { 'type__protocol' : 'ssh' }
+" 最近開いたファイルを表示
+"Plug 'Shougo/neomru.vim'
 
-  " カーソル移動を楽にする(ace-jump-mode のようなもの)
-  NeoBundle 'Lokaltog/vim-easymotion', { 'type__protocol' : 'ssh' }
+" Railsのファイル移動を楽にする
+Plug 'Shougo/unite.vim'
+Plug 'basyura/unite-rails'
 
-  " % で対応する括弧に移動する機能を拡張
-  NeoBundle 'tmhedberg/matchit', { 'type__protocol' : 'ssh' }
+" Rails向けのコマンドを提供する
+Plug 'tpope/vim-rails'
 
-  " ファイルオープンを便利に
-  NeoBundle 'Shougo/unite.vim', { 'type__protocol' : 'ssh' }
+" シングルクオートとダブルクオートの入れ替え等
+Plug 'tpope/vim-surround'
 
-  " 最近開いたファイルを表示
-  NeoBundle 'Shougo/neomru.vim', { 'type__protocol' : 'ssh' }
+" 行末の半角スペースを可視化
+Plug 'bronson/vim-trailing-whitespace'
 
-  " Railsのファイル移動を楽にする
-  NeoBundle 'basyura/unite-rails', { 'type__protocol' : 'ssh' }
+" vimでemmetを使用する
+Plug 'mattn/emmet-vim'
 
-  " Rails向けのコマンドを提供する
-  NeoBundle 'tpope/vim-rails', { 'type__protocol' : 'ssh' }
+" 括弧の入力を楽にする
+Plug 'kana/vim-smartinput'
 
-  " シングルクオートとダブルクオートの入れ替え等
-  NeoBundle 'tpope/vim-surround', { 'type__protocol' : 'ssh' }
+" JavaScript
+Plug 'pangloss/vim-javascript'
+Plug 'mattn/jscomplete-vim'
 
-  " 行末の半角スペースを可視化
-  NeoBundle 'bronson/vim-trailing-whitespace', { 'type__protocol' : 'ssh' }
+" JavaScriptのインデント
+Plug 'jiangmiao/simple-javascript-indenter'
 
-  " vimでemmetを使用する
-  NeoBundle 'mattn/emmet-vim', { 'type__protocol' : 'ssh' }
+" JavaScriptの色付け
+Plug 'jelera/vim-javascript-syntax'
 
-  " 括弧の入力を楽にする
-  NeoBundle 'kana/vim-smartinput', { 'type__protocol' : 'ssh' }
+" VimでPerl、Rubyの正規表現を使用する(置換は %S を使用することで利用可能)
+Plug 'othree/eregex.vim'
 
-  " JavaScript
-  NeoBundle 'pangloss/vim-javascript', { 'type__protocol' : 'ssh' }
-  NeoBundle 'mattn/jscomplete-vim', { 'type__protocol' : 'ssh' }
+" 整形を楽に行うためのプラグイン
+Plug 'junegunn/vim-easy-align'
 
-  " JavaScriptのインデント
-  NeoBundle 'jiangmiao/simple-javascript-indenter', { 'type__protocol' : 'ssh' }
+" htmlに関するプラグイン
+Plug 'othree/html5.vim'
 
-  " JavaScriptの色付け
-  NeoBundle 'jelera/vim-javascript-syntax', { 'type__protocol' : 'ssh' }
+" Sassに関するプラグイン
+Plug 'cakebaker/scss-syntax.vim'
 
-  " VimでPerl、Rubyの正規表現を使用する(置換は %S を使用することで利用可能)
-  NeoBundle 'othree/eregex.vim', { 'type__protocol' : 'ssh' }
+" YAMLに関するプラグイン
+Plug 'mrk21/yaml-vim'
 
-  " 整形を楽に行うためのプラグイン
-  NeoBundle 'junegunn/vim-easy-align', { 'type__protocol' : 'ssh' }
+" コードの静的解析ツール
+Plug 'scrooloose/syntastic'
 
-  " htmlに関するプラグイン
-  NeoBundle 'othree/html5.vim', { 'type__protocol' : 'ssh' }
+" ステータスラインの表示を変更
+Plug 'itchyny/lightline.vim'
 
-  " Sassに関するプラグイン
-  NeoBundle 'cakebaker/scss-syntax.vim', { 'type__protocol' : 'ssh' }
-
-  " YAMLに関するプラグイン
-  NeoBundle 'mrk21/yaml-vim', { 'type__protocol' : 'ssh' }
-
-  " コードの静的解析ツール
-  NeoBundle 'scrooloose/syntastic', { 'type__protocol' : 'ssh' }
-
-  " ステータスラインの表示を変更
-  NeoBundle 'itchyny/lightline.vim', { 'type__protocol' : 'ssh' }
-
-  " Markdown
-  NeoBundle 'plasticboy/vim-markdown', {'type__protocol' : 'ssh'}
-  NeoBundle 'kannokanno/previm', {'type__protocol' : 'ssh' }
-  NeoBundle 'tyru/open-browser.vim', {'type__protocol' : 'ssh' }
-
-  " ColorScheme
-  NeoBundle 'jnurmine/Zenburn', { 'type__protocol' : 'ssh' }
-call neobundle#end()
+" ColorScheme
+Plug 'jnurmine/Zenburn'
+call plug#end()
 
 " ここに記述しないとプラグインのインデントが上手く動作しない
 filetype plugin indent on
-
-NeoBundleCheck
 
 " --------------------------------
 " neocomplete.vim
