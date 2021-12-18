@@ -21,3 +21,7 @@ fi
 if [ ! -e "$HOME/.vim/indent" ]; then
   ln -sfn $(git rev-parse --show-toplevel)/indent $HOME/.vim/indent
 fi
+
+if [ ! -e "$HOME/.config/nvim/init.vim" ]; then
+  ln -sf $(git rev-parse --show-toplevel)/nvim/init.vim $HOME/.config/nvim/init.vim
+fi
