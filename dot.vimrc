@@ -458,6 +458,8 @@ let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git', '.svn']
 " ctagsのオプション
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
+" 警告は1度のみ出力
+let g:auto_ctags_warn_once = 1
 
 " --------------------------------
 " vim-markdown の設定
