@@ -2,6 +2,10 @@
 set encoding=utf-8
 scriptencoding utf-8
 set fileencoding=utf-8 " 保存時の文字コード
+" 色付けの設定
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " 全角記号の表示に関する設定
 set ambiwidth=double
 " 読み込み時の文字コードの自動判別. 左側が優先される
@@ -58,9 +62,12 @@ augroup auto_comment_off
     autocmd BufEnter * setlocal formatoptions-=r
     autocmd BufEnter * setlocal formatoptions-=o
 augroup END
+
 " カーソル位置を記憶する
-au BufWritePost * if &filetype != "gitcommit" | mkview | endif
-autocmd BufReadPost * if &filetype != "gitcommit" | loadview | endif
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+      \   exe "normal! g'\"" |
+      \ endif
 
 " 1つ前に実行したコマンドを実行する
 nnoremap c. q:k<CR>
@@ -141,11 +148,17 @@ vmap <silent> <expr> p <sid>Repl()
 " vim-plug
 " -------------------------------
 call plug#begin('~/.vim/plugged')
-Plug 'Shougo/neocomplete.vim'
-Plug 'Konfekt/FastFold'
+
+if has('nvim')
+  " 補完を行うプラグイン
+  Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'yarn install --frozen-lockfile' }
+else
+  Plug 'Shougo/neocomplete.vim'
+  Plug 'Konfekt/FastFold'
+endif
 
 " タグ生成
-Plug 'soramugi/auto-ctags.vim'
+Plug 'szw/vim-tags'
 
 Plug 'vim-ruby/vim-ruby'
 
@@ -213,6 +226,9 @@ Plug 'mrk21/yaml-vim'
 " コードの静的解析ツール
 Plug 'scrooloose/syntastic'
 
+" カラーテーマ
+Plug 'altercation/vim-colors-solarized'
+
 " ステータスラインの表示を変更
 Plug 'itchyny/lightline.vim'
 
@@ -223,58 +239,60 @@ call plug#end()
 " ここに記述しないとプラグインのインデントが上手く動作しない
 filetype plugin indent on
 
-" --------------------------------
-" neocomplete.vim
-" --------------------------------
-let g:acp_enableAtStartup = 0
-" 起動時に有効化
-let g:neocomplete#enable_at_startup = 1
-" 大文字が入力されるまで大文字と小文字の区別を無視する
-let g:neocomplete#enable_smart_case = 1
-" _(アンダースコア)区切りの補完を有効化
-let g:neocomplete#enable_underbar_completion = 1
-let g:neocomplete#enable_camel_case_completion  =  1
-" ポップアップメニューで表示される候補の数
-let g:neocomplete#max_list = 20
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
+if !has('nvim')
+  " --------------------------------
+  " neocomplete.vim
+  " --------------------------------
+  let g:acp_enableAtStartup = 0
+  " 起動時に有効化
+  let g:neocomplete#enable_at_startup = 1
+  " 大文字が入力されるまで大文字と小文字の区別を無視する
+  let g:neocomplete#enable_smart_case = 1
+  " _(アンダースコア)区切りの補完を有効化
+  let g:neocomplete#enable_underbar_completion = 1
+  let g:neocomplete#enable_camel_case_completion  =  1
+  " ポップアップメニューで表示される候補の数
+  let g:neocomplete#max_list = 20
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+  endif
+  let g:neocomplete#auto_completion_start_length = 1
+  let g:neocomplete#sources#buffer#cache_limit_size = 500000
+  let g:neocomplete#data_directory = $HOME.'/.vim/cache/neocompl'
+  let g:neocomplete#min_keyword_length = 3
+  let g:neocomplete#enable_refresh_always = 1
+  if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+  endif
+
+  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+  call neocomplete#custom#source('_', 'converters',
+        \ ['converter_remove_overlap', 'converter_remove_last_paren',
+        \  'converter_delimiter', 'converter_abbr'])
+
+  " filetype=ruby で tag 補完を無効にする
+  call neocomplete#custom#source('tag',
+        \ 'disabled_filetypes', {'ruby' : 1})
+
+  " Plugin key-mappings.
+  inoremap <expr><C-g>     neocomplete#undo_completion()
+
+  " Recommended key-mappings.
+  " <CR>: close popup and save indent.
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+          return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+          " For no inserting <CR> key.
+          "return pumvisible() ? "\<C-y>" : "\<CR>"
+  endfunction
+
+  " <TAB>: completion.
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+  " <C-h>, <BS>: close popup and delete backword char.
+  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 endif
-let g:neocomplete#auto_completion_start_length = 1
-let g:neocomplete#sources#buffer#cache_limit_size = 500000
-let g:neocomplete#data_directory = $HOME.'/.vim/cache/neocompl'
-let g:neocomplete#min_keyword_length = 3
-let g:neocomplete#enable_refresh_always = 1
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-call neocomplete#custom#source('_', 'converters',
-      \ ['converter_remove_overlap', 'converter_remove_last_paren',
-      \  'converter_delimiter', 'converter_abbr'])
-
-" filetype=ruby で tag 補完を無効にする
-call neocomplete#custom#source('tag',
-      \ 'disabled_filetypes', {'ruby' : 1})
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-        return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-        " For no inserting <CR> key.
-        "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " --------------------------------
 " emmet-vim
@@ -450,16 +468,10 @@ let g:lightline = {
       \ }
 
 " ------------------------------------
-" auto-ctags.vimの設定
+" vim-tags.vimの設定
 " ------------------------------------
-" ファイル保存時に自動タグ生成(:Ctags で手動生成)
-let g:auto_ctags = 1
-" tagsファイルの生成先ディレクトリ(左に書いたものが優先される)
-let g:auto_ctags_directory_list = ['.git', '.svn']
-" ctagsのオプション
-let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
-" 警告は1度のみ出力
-let g:auto_ctags_warn_once = 1
+" ファイル保存時に自動タグ生成(:TagsGenerate! で手動生成)
+let g:vim_tags_auto_generate = 1
 
 " --------------------------------
 " vim-markdown の設定
@@ -470,3 +482,12 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_new_list_item_indent = 2
 " markdownの折りたたみなし
 let g:vim_markdown_folding_disabled=1
+
+" ------------------------------------
+" altercation/vim-colors-solarized.vimの設定
+" ------------------------------------
+set background=dark
+try
+  colorscheme solarized
+catch
+endtry
