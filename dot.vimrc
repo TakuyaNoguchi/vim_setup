@@ -480,6 +480,34 @@ let g:vim_markdown_new_list_item_indent = 2
 " markdownの折りたたみなし
 let g:vim_markdown_folding_disabled=1
 
+" 選択した文字列を p でリンク表記に変更(URLはクリップボードにYankしておく)
+" 参考情報: https://zenn.dev/skanehira/articles/2021-11-29-vim-paste-clipboard-link
+let s:clipboard_register = has('linux') || has('unix') ? '+' : '*'
+function! InsertMarkdownLink() abort
+  " use register `9`
+  let old = getreg('9')
+  let link = trim(getreg(s:clipboard_register))
+  if link !~# '^http.*'
+    normal! gvp
+    return
+  endif
+
+  " replace `[text](link)` to selected text
+  normal! gv"9y
+  let word = getreg(9)
+  let newtext = printf('[%s](%s)', word, link)
+  call setreg(9, newtext)
+  normal! gv"9p
+
+  " restore old data
+  call setreg(9, old)
+endfunction
+
+augroup markdown-insert-link
+  au!
+  au FileType markdown vnoremap <buffer> <silent> p :<C-u>call InsertMarkdownLink()<CR>
+augroup END
+
 " ------------------------------------
 " jnurmine/Zenburn の設定
 " ------------------------------------
