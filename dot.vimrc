@@ -226,9 +226,6 @@ Plug 'mrk21/yaml-vim'
 " コードの静的解析ツール
 Plug 'scrooloose/syntastic'
 
-" カラーテーマ
-Plug 'altercation/vim-colors-solarized'
-
 " ステータスラインの表示を変更
 Plug 'itchyny/lightline.vim'
 
@@ -484,10 +481,6 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_folding_disabled=1
 
 " ------------------------------------
-" altercation/vim-colors-solarized.vimの設定
+" jnurmine/Zenburn の設定
 " ------------------------------------
-set background=dark
-try
-  colorscheme solarized
-catch
-endtry
+colors zenburn
