@@ -230,7 +230,7 @@ Plug 'scrooloose/syntastic'
 Plug 'itchyny/lightline.vim'
 
 " ColorScheme
-Plug 'jnurmine/Zenburn'
+Plug 'jpo/vim-railscasts-theme'
 call plug#end()
 
 " ここに記述しないとプラグインのインデントが上手く動作しない
@@ -509,6 +509,6 @@ augroup markdown-insert-link
 augroup END
 
 " ------------------------------------
-" jnurmine/Zenburn の設定
+" jpo/vim-railscasts-theme の設定
 " ------------------------------------
-colors zenburn
+color railscasts
